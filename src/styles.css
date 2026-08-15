@@ -1,0 +1,152 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0f1420; --panel: #171e2e; --panel2: #1e2740;
+  --text: #e8ecf5; --dim: #93a0b8; --acc: #4ade80; --acc2: #60a5fa;
+  --line: #2a3550;
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+button, input, select { font-family: inherit; }
+
+.app { max-width: 1200px; margin: 0 auto; padding: clamp(14px, 3vw, 24px) clamp(12px, 3vw, 16px) 48px; }
+header h1 { font-size: clamp(20px, 5vw, 26px); margin-bottom: 6px; }
+header p { color: var(--dim); font-size: clamp(12.5px, 2.6vw, 14px); margin-bottom: 20px; line-height: 1.5; }
+footer { margin-top: 24px; color: var(--dim); font-size: 12px; text-align: center; line-height: 1.5; }
+
+/* ---------- 큰 레이아웃 ---------- */
+.layout { display: grid; grid-template-columns: minmax(360px, 400px) 1fr; gap: 16px; align-items: start; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(12px, 2.5vw, 16px); }
+
+.panel-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.panel-head h2 { font-size: 17px; }
+.panel-head > div { display: flex; gap: 6px; flex-wrap: wrap; }
+.count { color: var(--dim); font-size: 13px; font-weight: normal; }
+button {
+  background: var(--acc); color: #06220f; border: 0; border-radius: 8px;
+  padding: 8px 12px; font-weight: 600; cursor: pointer; font-size: 13px; min-height: 38px;
+}
+button.ghost { background: transparent; color: var(--acc); border: 1px solid var(--acc); }
+.hint { color: var(--dim); font-size: 13px; margin: 8px 0; line-height: 1.5; }
+
+/* ---------- 로스터 ---------- */
+.player-list { list-style: none; max-height: min(42vh, 320px); overflow-y: auto; margin: 0 -4px; }
+.player-list li {
+  display: flex; align-items: center; gap: 8px; padding: 9px 8px; border-radius: 8px;
+  cursor: pointer; font-size: 14px; min-width: 0;
+}
+.player-list li:hover { background: var(--panel2); }
+.player-list li.sel { background: var(--panel2); outline: 1px solid var(--acc); }
+.tag { font-size: 11px; padding: 2px 6px; border-radius: 5px; flex-shrink: 0; }
+.tag.FW { background: #7f1d1d; } .tag.MF { background: #14532d; }
+.tag.DF { background: #1e3a8a; } .tag.GK { background: #713f12; }
+.pname { flex-shrink: 0; }
+.assigned {
+  color: var(--dim); font-size: 12px; margin-left: auto; text-align: right;
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.assigned b { color: var(--acc); }
+.bench-tag { color: #f59e0b; }
+.del { background: transparent; color: var(--dim); padding: 4px 8px; font-size: 18px; min-height: 0; flex-shrink: 0; }
+.del:hover { color: #f87171; }
+
+/* ---------- 선수 편집기 ---------- */
+.editor { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 12px; }
+.editor-head { display: flex; gap: 8px; margin-bottom: 12px; }
+.editor-head input, .editor-head select {
+  background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+  border-radius: 8px; padding: 9px 10px; font-size: 15px; min-height: 40px;
+}
+.editor-head input { flex: 1; min-width: 0; }
+.sliders label {
+  display: grid; grid-template-columns: 62px 1fr 32px; align-items: center;
+  gap: 10px; font-size: 12.5px; margin-bottom: 6px; color: var(--dim);
+}
+.sliders b { color: var(--text); text-align: right; }
+.sliders input[type=range] { accent-color: var(--acc); height: 22px; }
+
+/* ---------- 레이더 ---------- */
+.radar-box { text-align: center; margin-top: 10px; }
+.radar { width: 100%; max-width: 300px; height: auto; }
+.radar-grid { fill: none; stroke: var(--line); stroke-width: 1; }
+.radar-label { fill: var(--dim); font-size: 9.5px; }
+.radar-label.key { fill: var(--acc); font-weight: 700; }
+.radar-label.sec { fill: var(--acc2); }
+.radar-player { fill: rgba(74, 222, 128, 0.25); stroke: var(--acc); stroke-width: 2; }
+.radar-role { fill: none; stroke: #f59e0b; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.radar-caption { font-size: 12px; color: var(--dim); }
+.key-txt { color: var(--acc); } .sec-txt { color: var(--acc2); }
+.ranking { text-align: left; margin-top: 10px; background: var(--panel2); border-radius: 10px; padding: 10px 12px; }
+.ranking h4 { font-size: 12px; color: var(--dim); margin-bottom: 6px; }
+.rank-row { display: flex; justify-content: space-between; font-size: 13px; padding: 3px 0; }
+.rank-row b { color: var(--acc); }
+
+/* ---------- 빈 상태 ---------- */
+.empty { text-align: center; padding: clamp(48px, 12vw, 80px) 20px; color: var(--dim); }
+.empty h2 { font-size: 42px; margin-bottom: 10px; }
+.empty p { line-height: 1.7; }
+.empty small { color: #6b7688; font-size: 12px; }
+
+/* ---------- 포메이션 탭 ---------- */
+.form-tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.tab {
+  background: var(--panel2); color: var(--dim); border: 1px solid var(--line);
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  padding: 7px 11px; position: relative; border-radius: 8px; min-height: 44px;
+}
+.tab small { font-size: 10.5px; font-weight: normal; }
+.tab.on { color: var(--text); border-color: var(--acc); }
+.tab em {
+  position: absolute; top: -8px; right: -6px; background: var(--acc); color: #06220f;
+  font-style: normal; font-size: 9.5px; padding: 1px 5px; border-radius: 6px;
+}
+
+/* ---------- 결과 본문 (피치 + 전술) ---------- */
+.result-body { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+.pitch { flex: 1 1 300px; max-width: 380px; height: auto; margin: 0 auto; display: block; }
+.pitch-player { cursor: pointer; }
+.dot { fill: #0f1420; stroke: var(--acc); stroke-width: 2; }
+.dot.sel { fill: var(--acc); }
+.dot.sel + .dot-fit { fill: #06220f; }
+.dot-fit { fill: var(--acc); font-size: 12px; font-weight: 700; }
+.dot-name { fill: #fff; font-size: 11.5px; font-weight: 600; paint-order: stroke; stroke: rgba(0,0,0,.55); stroke-width: 2.5px; }
+.dot-role { fill: #d9f7e4; font-size: 9.5px; paint-order: stroke; stroke: rgba(0,0,0,.55); stroke-width: 2px; }
+
+.side { flex: 2 1 280px; min-width: 0; }
+.side h3 { font-size: 15px; margin: 6px 0 8px; }
+.tactic { background: var(--panel2); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
+.tactic h4 { font-size: 13.5px; color: var(--acc); margin-bottom: 3px; }
+.tactic p { font-size: 13px; color: var(--dim); line-height: 1.5; }
+.bench-list { color: var(--dim); font-size: 13px; line-height: 1.6; }
+
+/* ================= 반응형 ================= */
+
+/* 태블릿·좁은 창: 2단 → 1단으로 쌓기 */
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* 폰: 터치 최적화 + 탭 가로 스와이프 + iOS 확대 방지 */
+@media (max-width: 560px) {
+  .panel-head { justify-content: space-between; }
+  .panel-head > div { flex: 1 1 100%; }
+  .panel-head > div button { flex: 1; }
+
+  /* 폼 컨트롤 16px 이상 → iOS Safari 포커스 시 자동 줌 방지 */
+  .editor-head input, .editor-head select { font-size: 16px; }
+  button { font-size: 14px; }
+
+  /* 포메이션 탭: 줄바꿈 대신 한 줄 가로 스크롤 */
+  .form-tabs {
+    flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity;
+    margin: 0 -4px 14px; padding: 4px; -webkit-overflow-scrolling: touch;
+  }
+  .form-tabs::-webkit-scrollbar { height: 0; }
+  .tab { flex: 0 0 auto; scroll-snap-align: start; }
+
+  .radar { max-width: 260px; }
+  .sliders label { grid-template-columns: 58px 1fr 30px; gap: 8px; }
+}
