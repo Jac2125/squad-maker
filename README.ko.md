@@ -6,7 +6,7 @@
 각 선수에게 가장 잘 맞는 **역할(archetype)** 을 부여하고 스쿼드 전체의 부적합도가 최소가 되는
 **포메이션과 전술**을 제안합니다. 할당 문제(assignment problem)를 헝가리안 알고리즘으로 풀어 계산합니다.
 
-**▶ 데모:** https://jac2125.github.io/assets/html/squad-maker.html
+**▶ 데모:** https://jac2125.github.io/squad-maker/
 
 ## ⚠️ 먼저 읽어주세요 — 실행 방법
 

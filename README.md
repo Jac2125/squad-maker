@@ -7,7 +7,7 @@ players, and it assigns each player the **role (archetype)** that fits them best
 **formation and tactics** that minimize the squad's total misfit. The computation solves an
 assignment problem with the Hungarian algorithm.
 
-**▶ Demo:** https://jac2125.github.io/assets/html/squad-maker.html
+**▶ Demo:** https://jac2125.github.io/squad-maker/
 
 ## ⚠️ Read this first — how to run it
 
